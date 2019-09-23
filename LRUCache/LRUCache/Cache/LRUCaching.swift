@@ -23,8 +23,12 @@ class LRUCaching <K: Hashable, V> {
     }
     
     func add(intoCache data: CacheNode<K, V>) {
-        hashMap[data.key] = data
-        list.insert(newNode: data)
+        if let mapData = hashMap[data.key] {
+            list.updatePreiority(forNode: mapData)
+        } else {
+            hashMap[data.key] = data
+            list.insert(newNode: data)
+        }
     }
 
 }

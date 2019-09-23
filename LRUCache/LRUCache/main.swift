@@ -8,7 +8,7 @@
 
 import Foundation
 
-let lruCache = LRUCaching<Int, Int>(withCapacity: 3)
+let lruCache = LRUCaching<Int, Int>(withCapacity: 5)
 
 let node1 = CacheNode<Int, Int>(withKey: 1, andValue: 1)
 lruCache.add(intoCache: node1)
@@ -20,5 +20,9 @@ let node4 = CacheNode<Int, Int>(withKey: 4, andValue: 4)
 lruCache.add(intoCache: node4)
 let node5 = CacheNode<Int, Int>(withKey: 5, andValue: 5)
 lruCache.add(intoCache: node5)
+let node6 = CacheNode<Int, Int>(withKey: 6, andValue: 6)
+lruCache.add(intoCache: node6)
+let node7 = CacheNode<Int, Int>(withKey: 3, andValue: 3)
+lruCache.add(intoCache: node7)
 
 print(lruCache)
