@@ -62,4 +62,19 @@ class CacheList <K,V> {
         tailNode = newlastNode
         return currentLast?.key
     }
+    
+    func updatePreiority(forNode node: CacheNode<K, V>) {
+        
+        // remove existing node links
+        let previousNode = node.previous
+        let nextNode = node.next
+        previousNode?.next = nextNode
+        nextNode?.previous = previousNode
+        
+        // set existing node as head
+        let currentHead = headNode
+        node.previous = currentHead
+        currentHead?.next = node
+        headNode = node
+    }
 }
