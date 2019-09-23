@@ -36,19 +36,19 @@ class CacheList <K,V> {
                 removeHandler?(key)
             }
         }
-        guard headNode != nil else {
-            self.headNode = node
+        guard tailNode != nil else {
+            self.tailNode = node
             return
         }
         guard let currentNode = fetchLastNode() else { return }
         currentNode.next = node
         node.previous = currentNode
-        tailNode = node
+        headNode = node
     }
     
     func fetchLastNode() -> CacheNode<K, V>? {
         var currentNode:CacheNode<K, V>?
-        currentNode = headNode
+        currentNode = tailNode
         while currentNode?.next != nil {
             currentNode = currentNode?.next
         }
@@ -57,8 +57,8 @@ class CacheList <K,V> {
     
     func removeNode() -> K?{
         let currentLast = tailNode
-        let newlastNode = tailNode?.previous
-        newlastNode?.next = nil
+        let newlastNode = tailNode?.next
+        newlastNode?.previous = .none
         tailNode = newlastNode
         return currentLast?.key
     }
