@@ -8,7 +8,7 @@
 
 import Foundation
 
-let lruCache = LRUCaching<Int, Int>(withCapacity: 5)
+let lruCache = LRUCaching<Int, Int>(withCapacity: 4)
 
 let node1 = CacheNode<Int, Int>(withKey: 1, andValue: 1)
 lruCache.add(intoCache: node1)
